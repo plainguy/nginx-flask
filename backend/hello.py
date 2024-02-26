@@ -45,7 +45,7 @@ def listBlog():
     for c in rec:
         response = response  + '<div>   Hello  ' + c + '</div>'
 
-    response = response + '<p><img src="https://nginx-flask-oss.oss-ap-southeast-5.aliyuncs.com/Alibaba-Cloud-logo.png" /></p>
+    response = response + '<p><img src="https://nginx-flask-oss.oss-ap-southeast-5.aliyuncs.com/Alibaba-Cloud-logo.png" /></p>'
     return response
 
 
