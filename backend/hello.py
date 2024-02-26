@@ -4,7 +4,7 @@ import mysql.connector
 
 
 class DBManager:
-    def __init__(self, database='mysql', host=os.getenv("MYSQL_DB_HOST"), user=os.getenv("MYSQL_DB_USER"), password=os.getenv("MYSQL_DB_PASS"), port=os.getenv("MYSQL_DB_PORT")):
+    def __init__(self, database='mysql', host=os.getenv("MYSQL_DB_HOST"), user=os.getenv("MYSQL_DB_USER"), password=os.getenv("MYSQL_DB_PASS"), port=3306):
         # pf = open(password_file, 'r')
         self.connection = mysql.connector.connect(
             user=user, 
