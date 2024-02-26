@@ -19,7 +19,7 @@ class DBManager:
     def populate_db(self):
         self.cursor.execute('DROP TABLE IF EXISTS blog')
         self.cursor.execute('CREATE TABLE blog (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255))')
-        # self.cursor.executemany('INSERT INTO blog (id, title) VALUES (%s, %s);', [(i, 'Blog post #%d'% i) for i in range (1,5)])
+        self.cursor.executemany('INSERT INTO blog (id, title) VALUES (%s, %s);', [(i, 'Blog post #%d'% i) for i in range (1,5)])
         self.connection.commit()
     
     def query_titles(self):
