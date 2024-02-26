@@ -50,8 +50,8 @@ services:
     networks:
       - frontnet
 
-volumes:
-  db-data:
+# volumes:
+#   db-data:
 
 secrets:
   db-password:
