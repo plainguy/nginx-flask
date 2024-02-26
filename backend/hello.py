@@ -16,7 +16,7 @@ class DBManager:
             port=port,
             auth_plugin='mysql_native_password'
         )
-        pf.close()
+        # pf.close()
         self.cursor = self.connection.cursor()
     
     def populate_db(self):
