@@ -22,7 +22,7 @@ class DBManager:
     def populate_db(self):
         self.cursor.execute('DROP TABLE IF EXISTS blog')
         self.cursor.execute('CREATE TABLE blog (title VARCHAR(255))')
-        self.cursor.executemany('INSERT INTO blog (title) VALUES ("Hello Alibaba Cloud")')
+        self.cursor.execute('INSERT INTO blog (title) VALUES ("Hello Alibaba Cloud")')
         self.connection.commit()
     
     def query_titles(self):
