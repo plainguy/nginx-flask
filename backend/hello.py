@@ -21,8 +21,8 @@ class DBManager:
     
     def populate_db(self):
         self.cursor.execute('DROP TABLE IF EXISTS blog')
-        self.cursor.execute('CREATE TABLE blog (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255))')
-        self.cursor.executemany('INSERT INTO blog (id, title) VALUES (%s, %s);', [(i, 'Blog post #%d'% i) for i in range (1,5)])
+        self.cursor.execute('CREATE TABLE blog (title VARCHAR(255))')
+        self.cursor.executemany('INSERT INTO blog (title) VALUES ("Hello Alibaba Cloud")')
         self.connection.commit()
     
     def query_titles(self):
@@ -46,7 +46,7 @@ def listBlog():
 
     response = ''
     for c in rec:
-        response = response  + '<div>   Hello  ' + c + '</div>'
+        response = response  + f'<h2>{c}</h2>'
 
     response = response + '<p><img src="https://nginx-flask-oss.oss-ap-southeast-5.aliyuncs.com/Alibaba-Cloud-logo.png" /></p>'
     print(response)
