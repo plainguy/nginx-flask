@@ -1,7 +1,9 @@
 import os
 from flask import Flask
 import mysql.connector
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class DBManager:
     def __init__(self, database='mysql', host=os.getenv("MYSQL_DB_HOST"), user=os.getenv("MYSQL_DB_USER"), password=os.getenv("MYSQL_DB_PASS"), port=3306):
