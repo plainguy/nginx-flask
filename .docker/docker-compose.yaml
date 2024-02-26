@@ -1,25 +1,25 @@
 services:
-  db:
-    image: mariadb:10-focal
-    command: '--default-authentication-plugin=mysql_native_password'
-    restart: always
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
-      interval: 3s
-      retries: 5
-      start_period: 30s
-    secrets:
-      - db-password
-    volumes:
-      - db-data:/var/lib/mysql
-    networks:
-      - backnet
-    environment:
-      - MYSQL_DATABASE=example
-      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
-    expose:
-      - 3306
-      - 33060
+  # db:
+  #   image: mariadb:10-focal
+  #   command: '--default-authentication-plugin=mysql_native_password'
+  #   restart: always
+  #   healthcheck:
+  #     test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+  #     interval: 3s
+  #     retries: 5
+  #     start_period: 30s
+  #   secrets:
+  #     - db-password
+  #   volumes:
+  #     - db-data:/var/lib/mysql
+  #   networks:
+  #     - backnet
+  #   environment:
+  #     - MYSQL_DATABASE=example
+  #     - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
+  #   expose:
+  #     - 3306
+  #     - 33060
 
   backend:
     build:
@@ -28,6 +28,7 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./.env:/code/.env
     secrets:
       - db-password
     ports:
@@ -35,9 +36,9 @@ services:
     networks:
       - backnet
       - frontnet
-    depends_on:
-      db:
-        condition: service_healthy
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
 
   proxy:
     build: proxy
@@ -49,8 +50,8 @@ services:
     networks:
       - frontnet
 
-volumes:
-  db-data:
+# volumes:
+#   db-data:
 
 secrets:
   db-password:
