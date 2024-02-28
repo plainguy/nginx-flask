@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class DBManager:
-    def __init__(self, database='example', host=os.getenv("MYSQL_DB_HOST"), user=os.getenv("MYSQL_DB_USER"), password=os.getenv("MYSQL_DB_PASS"), port=3306):
+    def __init__(self, database='example', host=os.getenv("MYSQL_DB_HOST"), user=os.getenv("MYSQL_DB_USER"), password=os.getenv("MYSQL_DB_PASS"), port=os.getenv("MYSQL_DB_PORT")):
         # pf = open(password_file, 'r')
         self.connection = mysql.connector.connect(
             user=user, 
